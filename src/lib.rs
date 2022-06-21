@@ -40,13 +40,12 @@ where
     }
 }
 
-
 #[cfg(test)]
 mod tests {
-    use http::{StatusCode};
+    use super::*;
+    use http::StatusCode;
     use reqwest::{Request, Response};
     use std::sync::{Arc, Mutex};
-    use super::*;
 
     struct End;
 
@@ -65,13 +64,13 @@ mod tests {
     }
 
     struct CheckMiddleware {
-        check: Arc<Mutex<bool>>
+        check: Arc<Mutex<bool>>,
     }
 
     impl CheckMiddleware {
         fn new() -> Self {
             Self {
-                check: Arc::new(Mutex::new(false))
+                check: Arc::new(Mutex::new(false)),
             }
         }
 
@@ -98,7 +97,6 @@ mod tests {
         }
     }
 
-
     #[tokio::test]
     async fn test_runs_inner_middleware() {
         let check = CheckMiddleware::new();
@@ -106,10 +104,11 @@ mod tests {
         let conditional = ConditionalMiddleware::new(check, |_req: &Request| true);
         let request = reqwest::Request::new(http::Method::GET, "http://localhost".parse().unwrap());
 
-        let client = reqwest_middleware::ClientBuilder::new(reqwest::Client::builder().build().unwrap())
-            .with(conditional)
-            .with(End)
-            .build();
+        let client =
+            reqwest_middleware::ClientBuilder::new(reqwest::Client::builder().build().unwrap())
+                .with(conditional)
+                .with(End)
+                .build();
 
         let resp = client.execute(request).await.unwrap().text().await.unwrap();
 
@@ -124,14 +123,15 @@ mod tests {
         let conditional = ConditionalMiddleware::new(check, |_req: &Request| false);
         let request = reqwest::Request::new(http::Method::GET, "http://localhost".parse().unwrap());
 
-        let client = reqwest_middleware::ClientBuilder::new(reqwest::Client::builder().build().unwrap())
-            .with(conditional)
-            .with(End)
-            .build();
+        let client =
+            reqwest_middleware::ClientBuilder::new(reqwest::Client::builder().build().unwrap())
+                .with(conditional)
+                .with(End)
+                .build();
 
         let resp = client.execute(request).await.unwrap().text().await.unwrap();
 
         assert_eq!("end", resp);
         assert!(!*test.lock().unwrap())
-    }   
+    }
 }
