@@ -1,0 +1,7 @@
+:showtitle:
+:toc: left
+:icons: font
+
+= reqwest-conditional-middleware
+
+image::https://github.com/augustuswm/reqwest-conditional-middleware/workflows/CI/badge.svg[]
