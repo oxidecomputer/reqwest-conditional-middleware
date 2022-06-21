@@ -16,7 +16,6 @@ jobs:
           toolchain: stable
       - uses: actions-rs/cargo@v1
         with:
-        - name: Check style
           command: fmt
           args: -- --check
 
