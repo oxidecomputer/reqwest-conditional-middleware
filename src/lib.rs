@@ -7,7 +7,7 @@
 //! skipped and the current request will be passed along to the next middleware.
 //!
 //! # Example
-//! 
+//!
 //! Short-circuits a middleware stack and returns `OK` whenever the request method
 //! is `GET`
 //!
@@ -51,7 +51,6 @@ where
     T: Middleware,
     C: Fn(&Request) -> bool + Send + Sync + 'static,
 {
-
     /// Creates a new wrapped middleware. The function C will be run for each request to
     /// determine if the wrapped middleware should be run.
     pub fn new(inner: T, condition: C) -> Self {
