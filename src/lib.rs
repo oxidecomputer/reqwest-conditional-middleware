@@ -1,8 +1,46 @@
+//! The only export of this crate is a struct [`ConditionalMiddleware`] for creating conditional middlewares.
+//! This struct implements the [`Middleware`][reqwest_middleware::Middleware] trait
+//! and forwards requests on to the middleware that it wraps.
+//!
+//! The conditional wrapper holds a closure that will be run for each request. If the
+//! closure returns true, then the inner middleware will run. Otherwise it will be
+//! skipped and the current request will be passed along to the next middleware.
+//!
+//! # Example
+//! 
+//! Short-circuits a middleware stack and returns `OK` whenever the request method
+//! is `GET`
+//!
+//! ```
+//! struct AlwaysOk;
+//!
+//! #[async_trait]
+//! impl Middleware for AlwaysOk {
+//!     async fn handle(
+//!         &self,
+//!         _req: Request,
+//!         _extensions: &mut Extensions,
+//!         _next: Next<'_>,
+//!     ) -> Result<Response> {
+//!         let builder = http::Response::builder().status(StatusCode::OK);
+//!         Ok(builder.body("").unwrap().into())
+//!     }
+//! }
+//!
+//! let conditional = ConditionalMiddleware::new(
+//!     AlwaysOk,
+//!     |req: &Request| req.method() == Method::GET
+//! );
+//!
+//! ```
+
 use async_trait::async_trait;
 use reqwest::{Request, Response};
 use reqwest_middleware::{Middleware, Next, Result};
 use task_local_extensions::Extensions;
 
+/// A struct for holding a [`Middleware`][reqwest_middleware::Middleware] T that will be
+/// run when C evaluates to true
 pub struct ConditionalMiddleware<T, C> {
     inner: T,
     condition: C,
@@ -13,6 +51,9 @@ where
     T: Middleware,
     C: Fn(&Request) -> bool + Send + Sync + 'static,
 {
+
+    /// Creates a new wrapped middleware. The function C will be run for each request to
+    /// determine if the wrapped middleware should be run.
     pub fn new(inner: T, condition: C) -> Self {
         Self { inner, condition }
     }

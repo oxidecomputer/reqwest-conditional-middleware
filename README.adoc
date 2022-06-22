@@ -4,4 +4,6 @@
 
 = reqwest-conditional-middleware
 
+A middleware wrapper that enables (or disables) a wrapped Reqwest middleware on a per-request basis
+
 image::https://github.com/augustuswm/reqwest-conditional-middleware/workflows/CI/badge.svg[]
