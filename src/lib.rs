@@ -12,9 +12,14 @@
 //! is `GET`
 //!
 //! ```
+//! use reqwest::{Request, Response};
+//! use reqwest_conditional_middleware::ConditionalMiddleware;
+//! use reqwest_middleware::{Middleware, Next, Result};
+//! use task_local_extensions::Extensions;
+//!
 //! struct AlwaysOk;
 //!
-//! #[async_trait]
+//! #[async_trait::async_trait]
 //! impl Middleware for AlwaysOk {
 //!     async fn handle(
 //!         &self,
@@ -22,14 +27,14 @@
 //!         _extensions: &mut Extensions,
 //!         _next: Next<'_>,
 //!     ) -> Result<Response> {
-//!         let builder = http::Response::builder().status(StatusCode::OK);
+//!         let builder = http::Response::builder().status(http::StatusCode::OK);
 //!         Ok(builder.body("").unwrap().into())
 //!     }
 //! }
 //!
 //! let conditional = ConditionalMiddleware::new(
 //!     AlwaysOk,
-//!     |req: &Request| req.method() == Method::GET
+//!     |req: &Request| req.method() == http::Method::GET
 //! );
 //!
 //! ```
