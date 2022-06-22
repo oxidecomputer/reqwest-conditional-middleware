@@ -4,6 +4,6 @@
 
 = reqwest-conditional-middleware
 
-A middleware wrapper that enables (or disables) a wrapped [Reqwest middleware](https://github.com/TrueLayer/reqwest-middleware) on a per-request basis
+A middleware wrapper that enables (or disables) a wrapped https://github.com/TrueLayer/reqwest-middleware[Reqwest middleware] on a per-request basis
 
 image::https://github.com/augustuswm/reqwest-conditional-middleware/workflows/CI/badge.svg[]
