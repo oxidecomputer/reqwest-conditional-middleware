@@ -1,14 +1,10 @@
-:showtitle:
-:toc: left
-:icons: font
+# reqwest-conditional-middleware
 
-= reqwest-conditional-middleware
-
-image::https://github.com/augustuswm/reqwest-conditional-middleware/workflows/CI/badge.svg[]
+[![CI](https://github.com/oxidecomputer/reqwest-conditional-middleware/workflows/CI/badge.svg)](https://github.com/oxidecomputer/reqwest-conditional-middleware/actions?query=workflow%3ACI) [![docs.rs](https://docs.rs/reqwest-conditional-middleware/badge.svg)](https://docs.rs/reqwest-conditional-middleware)
 
 A middleware wrapper that enables (or disables) a wrapped https://github.com/TrueLayer/reqwest-middleware[Reqwest middleware] on a per-request basis
 
-=== Example
+### Example
 
 Usage of this crate depends on a few crates:
 
