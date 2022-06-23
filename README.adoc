@@ -20,7 +20,7 @@ reqwest-middleware = "0.1.5"
 task-local-extensions = "0.1.1"
 ```
 
-This in an example of a conditional middleware that short-circuits a middleware stack and
+This is an example of a conditional middleware that short-circuits a middleware stack and
 returns `OK` whenever the request method is `GET`
 
 ```rust
