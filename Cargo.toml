@@ -1,7 +1,7 @@
 [package]
 name = "reqwest-conditional-middleware"
 description = "A middleware wrapper that enables (or disables) a wrapped Reqwest middleware on a per-request basis"
-version = "0.1.0"
+version = "0.2.0"
 documentation = "https://docs.rs/reqwest-conditional-middleware/"
 repository = "https://github.com/oxidecomputer/reqwest-conditional-middleware"
 readme = "README.md"
@@ -11,7 +11,7 @@ license = "MIT"
 [dependencies]
 async-trait = "0.1.51"
 reqwest = { version = "0.11", default-features = false }
-reqwest-middleware = { version = "0.1.5" }
+reqwest-middleware = { version = "0.2.1" }
 task-local-extensions = "0.1.1"
 
 [dev-dependencies]
