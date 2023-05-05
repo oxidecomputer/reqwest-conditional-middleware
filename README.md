@@ -11,9 +11,9 @@ Usage of this crate depends on a few crates:
 ```toml
 async-trait = "0.1.51"
 reqwest = version = "0.11"
-reqwest-conditional-middleware = "0.1.0"
-reqwest-middleware = "0.1.5"
-task-local-extensions = "0.1.1"
+reqwest-conditional-middleware = "0.2.0"
+reqwest-middleware = "0.2.1"
+task-local-extensions = "0.1.4"
 ```
 
 This is an example of a conditional middleware that short-circuits a middleware stack and
