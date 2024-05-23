@@ -10,10 +10,9 @@ license = "MIT"
 
 [dependencies]
 async-trait = "0.1.51"
-reqwest = { version = "0.11", default-features = false }
-reqwest-middleware = { version = "0.2.1" }
-task-local-extensions = "0.1.4"
+http = "1"
+reqwest = { version = "0.12", default-features = false }
+reqwest-middleware = { version = "0.3" }
 
 [dev-dependencies]
-http = "0.2"
 tokio = { version = "1.6", features = ["full"] }

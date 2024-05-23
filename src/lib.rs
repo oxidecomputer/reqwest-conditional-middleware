@@ -15,7 +15,7 @@
 //! use reqwest::{Request, Response};
 //! use reqwest_conditional_middleware::ConditionalMiddleware;
 //! use reqwest_middleware::{Middleware, Next, Result};
-//! use task_local_extensions::Extensions;
+//! use http::Extensions;
 //!
 //! struct AlwaysOk;
 //!
@@ -40,9 +40,9 @@
 //! ```
 
 use async_trait::async_trait;
+use http::Extensions;
 use reqwest::{Request, Response};
 use reqwest_middleware::{Middleware, Next, Result};
-use task_local_extensions::Extensions;
 
 /// A struct for holding a [`Middleware`][reqwest_middleware::Middleware] T that will be
 /// run when C evaluates to true
