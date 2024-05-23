@@ -9,11 +9,11 @@ A middleware wrapper that enables (or disables) a wrapped [Reqwest middleware](h
 Usage of this crate depends on a few crates:
 
 ```toml
-async-trait = "0.1.51"
-reqwest = version = "0.11"
-reqwest-conditional-middleware = "0.2.0"
-reqwest-middleware = "0.2.1"
-task-local-extensions = "0.1.4"
+async-trait = "0.1.80"
+http = "1"
+reqwest = version = "0.12"
+reqwest-conditional-middleware = "0.3.0"
+reqwest-middleware = "0.3"
 ```
 
 This is an example of a conditional middleware that short-circuits a middleware stack and
