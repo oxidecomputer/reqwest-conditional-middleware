@@ -13,7 +13,7 @@ async-trait = "0.1.80"
 http = "1"
 reqwest = version = "0.12"
 reqwest-conditional-middleware = "0.3.0"
-reqwest-middleware = "0.3"
+reqwest-middleware = "0.4"
 ```
 
 This is an example of a conditional middleware that short-circuits a middleware stack and
