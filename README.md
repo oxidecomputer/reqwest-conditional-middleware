@@ -12,7 +12,7 @@ Usage of this crate depends on a few crates:
 async-trait = "0.1.80"
 http = "1"
 reqwest = version = "0.12"
-reqwest-conditional-middleware = "0.3.0"
+reqwest-conditional-middleware = "0.4.0"
 reqwest-middleware = "0.4"
 ```
 
